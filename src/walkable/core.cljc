@@ -425,8 +425,7 @@
 (defn look-up-cache [env parent-data]
   (let [scv (env/source-column-value env)
         r (get-in parent-data
-            [[(env/dispatch-key env)
-              (into {} (:params (:ast env)))]
+            [(env/dispatch-key env)
              scv])
         {:keys [join-children]} (root-process-query env)]
     {:join-children join-children
@@ -529,7 +528,7 @@
                                     :child-env child-env
                                     :source-column source-column
                                     :entities entities})]
-                  [[j (into {} (:params join-child-ast))]
+                  [j
                    (when query
                      {:target-column target-column
                       :query         (build-parameterized-sql-query query)})]))]
